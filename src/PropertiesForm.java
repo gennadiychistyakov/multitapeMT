@@ -12,9 +12,7 @@ import javax.swing.text.PlainDocument;
 public class PropertiesForm {
 
 	private final JFileChooser fileChs = new JFileChooser();
-	private JEditorPane edt1;
-	private JEditorPane edt2;
-	private JTextField eds;
+	private JTextField edt1, edt2, eds;
 	private JComboBox<String> lineCombo = new JComboBox<String>(new String[] {"1", "2", "3", "4", "5", "6","7", "8"});
 	private MTForm mtFrame = null;
 	private JFrame frame;
@@ -73,10 +71,9 @@ public class PropertiesForm {
 		eds.setDocument(new JTextFieldLimit(1));
 		pane.add(eds, c) ;
 	
-		edt1 = new JEditorPane();
+		edt1 = new JTextField();
 		c.gridx = 0;
 		c.gridy = 9;
-		edt1.setText(new String("/home/gena/projects/development/workspace/MT/123.mtd"));
 		pane.add(edt1, c);
 		
 		JButton oneBtn = new JButton("Обзор");
@@ -85,11 +82,10 @@ public class PropertiesForm {
 		pane.add(oneBtn, c);
 		oneBtn.addActionListener(new openData());
 	
-		edt2 = new JEditorPane();
+		edt2 = new JTextField();
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx = 0;
 		c.gridy = 12;
-		edt2.setText("/home/gena/projects/development/workspace/MT/123.mtc");
 		pane.add(edt2, c);
 		
 		JButton twoBtn = new JButton("Обзор");
