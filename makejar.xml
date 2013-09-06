@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project MT with libraries in sub-folder">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <target name="create_run_jar">
+        <jar destfile="/home/gena/projects/development/workspace/MT/mtm.jar">
+            <manifest>
+                <attribute name="Main-Class" value="PropertiesForm"/>
+                <attribute name="Class-Path" value="."/>
+            </manifest>
+            <fileset dir="/home/gena/projects/development/workspace/MT/bin"/>
+        	<fileset dir="/home/gena/projects/development/workspace/MT/" includes="*.png"/>
+        </jar>
+        <delete dir="/home/gena/projects/development/workspace/MT/mtm_lib"/>
+        <mkdir dir="/home/gena/projects/development/workspace/MT/mtm_lib"/>
+    </target>
+</project>

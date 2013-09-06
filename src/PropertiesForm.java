@@ -175,7 +175,6 @@ public class PropertiesForm {
 			int returnVal = fileChs.showOpenDialog(null);
 			if (returnVal == JFileChooser.APPROVE_OPTION) {
 				edt2.setText(fileChs.getSelectedFile().getAbsolutePath());
-				
 			}
 			
 		}
