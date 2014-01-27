@@ -186,7 +186,8 @@ public class PropertiesForm {
 		for(int i = 0; i < lcount; i++) 
 			data[i] = in.nextLine();
 		if (data.length == 0)
-			data[0] = eds.getText() ;
+			data[0] = eds.getText();
+		in.close();
 		return data;
 	}
 		
@@ -198,20 +199,26 @@ public class PropertiesForm {
 			for(int i = 0; i < tokens.length; i++)
 				tokens[i] = tokens[i].trim();
 			
-			if (tokens.length != (lcount * 3 + 2)) 
+			if (tokens.length != (lcount * 3 + 2)) {
+				in.close();
 				throw new IllegalArgumentException();
+			}
 			
 			int currentState = Integer.valueOf(tokens[0]);
 			int newState = Integer.valueOf(tokens[lcount + 1]);
 			char[] currentData = new char[lcount], newData = new char[lcount];
 			byte[] shifts = new byte[lcount];
 			for(int i = 0; i < lcount; i++) {
-				if(tokens[i + 1].length() != 1)
+				if(tokens[i + 1].length() != 1) {
+					in.close();
 					throw new IllegalArgumentException();
+				}
 				else
 					currentData[i] = tokens[i + 1].charAt(0);
-				if(tokens[i + lcount + 2].length() != 1)
+				if(tokens[i + lcount + 2].length() != 1) {
+					in.close();
 					throw new IllegalArgumentException();
+				}
 				else
 					newData[i] = tokens[i + lcount + 2].charAt(0);
 				if(tokens[i + 2 * lcount + 2].equals("L"))
@@ -222,12 +229,15 @@ public class PropertiesForm {
 					else
 						if(tokens[i + 2 * lcount + 2].equals("R"))
 							shifts[i] = 1;
-						else
+						else {
+							in.close();
 							throw new IllegalArgumentException();
+						}
 			}
 			Command cm = new Command(currentState, newState, currentData, newData, shifts);
 			commands.add(cm);
 		}
+		in.close();
 		return commands.toArray(new Command[commands.size()]);
 	}
 	
